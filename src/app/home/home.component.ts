@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataGetService } from '../shared/data-get.service';
+import { latLng, tileLayer } from 'leaflet';
 import { IEvent } from '../interfaces/event'
 import * as L from 'leaflet';
 
@@ -9,15 +10,17 @@ import * as L from 'leaflet';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private map;
+  options = {
+        layers: [
+          tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+          })
+        ],
+        zoom: 7,
+        center: latLng([ 46.879966, -121.726909 ])
+      };
   constructor(public dataGetService: DataGetService) { }
 
-	private initMap(): void {
-	  this.map = L.map('map', {
-	    center: [ 39.8282, -98.5795 ],
-	    zoom: 3
-	  });
-	}
   ngOnInit() {
 
     var data_input : IEvent = {

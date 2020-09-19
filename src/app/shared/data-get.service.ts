@@ -9,7 +9,7 @@ export class DataGetService {
 
   public categories;
   public data;
-  private credentials = 'client_id=QM2U4XNDGAZS2PZUYEH001OCBDBUBXBT1VZT5N4CT1DOI0ZX&client_secret=JFS0JK3BY3KND5OIY3FMEA4P5VP5G3FV31A4THXELDPB0ASA';
+  private credentials = 'client_id=T3G1LFSOOT1SLHVM5M0Z5TAORW2G0ZDJRPO0XH4DMZ5CJJD5&client_secret=1CYBI50VHYH313YZUBM41NL2DLESNEJTIXPN5IFDPNGAYAAQ';
   private url = '';
   private location = '';
   private category = 'I look for...';
@@ -55,7 +55,7 @@ export class DataGetService {
 
 
   getCategories() {
-    this.http.get('https://api.foursquare.com/v2/venues/categories?' + this.credentials + '&v=20170930')
+    this.http.get('https://api.foursquare.com/v2/venues/categories&' + this.credentials + '&v=20200919')
       .subscribe(response => {this.categories = response['response'];
         return response;}
       );
@@ -63,7 +63,7 @@ export class DataGetService {
 
 
   getUrl() {
-    this.url = 'https://api.foursquare.com/v2/venues/search?' + this.credentials + '&near=' + this.location + '&query=' + this.category + '&v=20173009&m=foursquare';
+    this.url = 'https://api.foursquare.com/v2/venues/search?' + this.credentials + '&near=' + this.location + '&query=' + this.category + '&v=20200919&m=foursquare';
     this.http.get(this.url).subscribe(
       response => {
         this.data = response['response'];
@@ -93,6 +93,7 @@ export class DataGetService {
     this.location;
     this.category;
   }
+
   clearError(parameter) {
     if (parameter === 'location') {
       this.errorLocation = false;
