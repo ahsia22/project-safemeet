@@ -10,6 +10,11 @@ import { DataGetService } from './shared/data-get.service';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { environment } from "../environments/environment";
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +29,8 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     AppRoutingModule,
     LeafletModule
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [DataGetService],
   bootstrap: [AppComponent]
