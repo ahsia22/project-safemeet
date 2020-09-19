@@ -32,10 +32,7 @@ export class HomeComponent implements OnInit {
     this.dataGetService.getCategories();
     // this.dataGetService.createEvent(data_input);
 
-    var hello;
-    this.dataGetService.getEvents().subscribe(res =>{
-      hello = res;
-      console.log(hello);
-    });
+    var hello = this.dataGetService.getEvents();
+    console.log(hello);
   }
 }

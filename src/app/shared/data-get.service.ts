@@ -27,7 +27,19 @@ export class DataGetService {
   }
 
   getEvents() { 
-    return this.firestore.collection("scheduled_events").snapshotChanges();
+    var snapshot;
+    this.firestore.collection("scheduled_events").get().subscribe(
+      (result: any) => {
+        snapshot = result;
+        snapshot.forEach(doc => {
+          console.log(doc.id, '=>', doc.data());
+        });
+        return snapshot;
+      }
+    );
+
+    
+
 
 //     return this.db.list('/products').snapshotChanges().pipe(
 //   map((products: any[]) => products.map(prod => {
