@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import 'rxjs/Rx';
 
 @Injectable()
 export class DataGetService {
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   public categories;
   public data;
@@ -18,25 +18,16 @@ export class DataGetService {
 
   getCategories() {
     this.http.get('https://api.foursquare.com/v2/venues/categories?' + this.credentials + '&v=20170930')
-      .map(
-      (response: Response) => {
-        return response.json();
-      }).subscribe(
-      (response: Response) => {
-        this.categories = response['response'];
-        return response;
-      });
+      .subscribe(response => {this.categories = response['response'];
+        return response;}
+      );
   }
 
-  
+
   getUrl() {
     this.url = 'https://api.foursquare.com/v2/venues/search?' + this.credentials + '&near=' + this.location + '&query=' + this.category + '&v=20173009&m=foursquare';
-    this.http.get(this.url)
-      .map(
-      (response: Response) => {
-        return response.json();
-      }).subscribe(
-      (response: Response) => {
+    this.http.get(this.url).subscribe(
+      response => {
         this.data = response['response'];
         this.hasChanges = false;
         return response;        
