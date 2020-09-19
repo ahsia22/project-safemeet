@@ -28,7 +28,7 @@ import { environment } from "../environments/environment";
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    LeafletModule
+    LeafletModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
