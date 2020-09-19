@@ -26,15 +26,13 @@ export class DataGetService {
     });
   }
 
-  getEvents() { 
-    var snapshot;
+  getEvents() {
     this.firestore.collection("scheduled_events").get().subscribe(
       (result: any) => {
-        snapshot = result;
-        snapshot.forEach(doc => {
+        result.forEach(doc => {
           console.log(doc.id, '=>', doc.data());
         });
-        return snapshot;
+        return result;
       }
     );
 
