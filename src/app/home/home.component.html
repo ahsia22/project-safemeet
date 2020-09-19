@@ -33,9 +33,8 @@
 </div>
 
 <!-- results displaying -->
-<div id="results" *ngIf="this.dataGetService.data" [style.display]="this.dataGetService.hasChanges ? 'none' : 'block'">
-  <div *ngFor='let list of this.dataGetService.data?.venues' class="col-md-12 col-sm-12">
-    <div class="col-md-6 col-md-6 col-xs-6 result"> - <b>Venue:</b> {{list.name}} <br> &nbsp; <b>Address:</b>{{list.location.formattedAddress}}</div>
-    <div class="col-md-6 col-sm-6 col-xs-6 result"><button class="btn btn-default btn-sm"><a target="_blank" href="http://maps.google.com/maps?q={{list.location.lat}},{{list.location.lng}}"><i class="fa fa-map" aria-hidden="true"></i> show on map</a> </button></div>
+<div class="map-container">
+  <div class="map-frame">
+    <div id="map"></div>
   </div>
 </div>
