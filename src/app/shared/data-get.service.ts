@@ -28,6 +28,12 @@ export class DataGetService {
       });
   }
 
+  
+
+  getEvent() {
+
+  }
+
   getUrl() {
     this.url = 'https://api.foursquare.com/v2/venues/search?' + this.credentials + '&near=' + this.location + '&query=' + this.category + '&v=20173009&m=foursquare';
     this.http.get(this.url)

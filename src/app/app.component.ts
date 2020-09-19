@@ -11,6 +11,7 @@ export class AppComponent {
  
   ngOnDestroy() {
     this.dataGetService.data;
+
   }
 
 }

@@ -13,7 +13,7 @@
           <div class="form-group category space">
             <select [ngClass]="{'error' : this.dataGetService.errorCategory}" (change)="this.dataGetService.changed()" [(ngModel)]="dataGetService.category"
               class="form-control input-lg" id="sel1">
-              <option selected>I look for... </option>
+              <option selected>I'm looking for... </option>
               <option value="{{categories.pluralName}}" *ngFor='let categories of this.dataGetService.categories?.categories' >{{categories.pluralName}}</option>
             </select>
           </div>

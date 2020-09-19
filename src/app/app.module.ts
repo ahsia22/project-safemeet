@@ -9,6 +9,14 @@ import { DataGetService } from './shared/data-get.service';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { EventsService } from './events-service.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,9 +29,15 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // AngularFirestore,
+    // Observable,
+    // EventsObject,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
+      // AngularFireDatabaseModule
   ],
-  providers: [DataGetService],
+  providers: [DataGetService, EventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
