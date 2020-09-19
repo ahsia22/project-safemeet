@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DataGetService } from './shared/data-get.service';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { MapComponent } from './map/map.component';
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
@@ -20,7 +21,8 @@ import { environment } from "../environments/environment";
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

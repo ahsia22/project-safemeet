@@ -20,7 +20,7 @@
               {
                 "glob": "**/*",
                 "input": "./node_modules/leaflet/dist/images",
-                "output": "leaflet/"
+                "output": "./assets"
               },              
               "src/assets",
               "src/favicon.ico"
@@ -44,7 +44,7 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
+              "buildOptimizer": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -89,7 +89,7 @@
               {
                 "glob": "**/*",
                 "input": "./node_modules/leaflet/dist/images",
-                "output": "leaflet/"
+                "output": "./assets"
               },              
               "src/assets",
               "src/favicon.ico",

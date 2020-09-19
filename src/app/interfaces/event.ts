@@ -5,4 +5,5 @@ export interface IEvent {
     attendees: Array<String>;
     coord_lat: number;
     coord_lon: number;
+    category: string;
 }

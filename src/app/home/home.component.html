@@ -1,4 +1,4 @@
-<div *ngIf="!this.dataGetService.data">
+<div *ngIf="this.dataGetService.data">
   <h2>FIND A PLACE FOR...</h2>
   <div class="frame">
 
@@ -33,22 +33,13 @@
 </div>
 
 <!-- results displaying -->
-<div class = "row" *ngIf="this.dataGetService.data" [style.display]="this.dataGetService.hasChanges ? 'none' : 'block'">
-  <div id="results" >
+<div *ngIf="!this.dataGetService.data" [style.display]="this.dataGetService.hasChanges ? 'none' : 'block'">
+  <!-- <div class="col-md-6">
     <div *ngFor='let list of this.dataGetService.data?.venues' class="col-md-12 col-sm-12">
-      <div class="col-md-6 col-md-6 col-xs-6 result"> - <b>Venue:</b> {{list.name}} <br> &nbsp; <b>Address:</b>{{list.location.formattedAddress}}</div>
-      <div class="col-md-6 col-sm-6 col-xs-6 result"><button class="btn btn-default btn-sm"><a target="_blank" href="http://maps.google.com/maps?q={{list.location.lat}},{{list.location.lng}}"><i class="fa fa-map" aria-hidden="true"></i> show on map</a> </button></div>
+        <div class="col-md-6 col-md-6 col-xs-6 result"> - <b>Venue:</b> {{list.name}} <br> &nbsp; <b>Address:</b>{{list.location.formattedAddress}}</div>
+        <div class="col-md-6 col-sm-6 col-xs-6 result"><button class="btn btn-default btn-sm"><a target="_blank" href="http://maps.google.com/maps?q={{list.location.lat}},{{list.location.lng}}">
+          <i class="fa fa-map" aria-hidden="true"></i> show on map</a> </button></div>
     </div>
-  </div>
-
-  <div class="map"
-       leaflet
-       [leafletOptions]="options">
-  </div>
-
+  </div> -->
+    <app-map></app-map>
 </div>
-<!-- <div class="map-container">
-  <div class="map-frame">
-    <div id="map"></div>
-  </div>
-</div> -->

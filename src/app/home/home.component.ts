@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { DataGetService } from '../shared/data-get.service';
-import { latLng, tileLayer } from 'leaflet';
-import { IEvent } from '../interfaces/event'
-import * as L from 'leaflet';
+import { IEvent } from '../interfaces/event'        // Hello, Good Sir
+// I'm editing the service.ts file m8
 
 @Component({
   selector: 'app-home',
@@ -10,16 +9,7 @@ import * as L from 'leaflet';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  options = {
-        layers: [
-          tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-          })
-        ],
-        zoom: 7,
-        center: latLng([ 46.879966, -121.726909 ])
-      };
-  constructor(public dataGetService: DataGetService) { }
+  constructor(private dataGetService: DataGetService) { }
 
   ngOnInit() {
 
@@ -27,6 +17,7 @@ export class HomeComponent implements OnInit {
       event_name: 'Recretional Outing',
       event_description: 'For Eric\'s Birthday',
       time: new Date(),
+      category: this.dataGetService.category,
       attendees: ['Eric', 'Sky', 'Solomon', 'Alex'],
       coord_lat: 42.296650,
       coord_lon: -83.721287

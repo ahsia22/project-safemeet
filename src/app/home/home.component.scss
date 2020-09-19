@@ -30,13 +30,8 @@ h2 {
  
 }
 
-.row {
-  display: flex;
-}
-
 #results {
     text-align: left;
-    flex: 20%;
     padding-top: 20px;
     overflow-y: scroll;
     height: 600px;
