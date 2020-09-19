@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { AngularFirestore } from '@angular/fire/firestore';
 import 'rxjs/Rx';
 
 @Injectable()
 export class DataGetService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private firestore: AngularFirestore) { }
 
   public categories;
   public data;
@@ -15,6 +16,31 @@ export class DataGetService {
   private errorCategory: boolean = false;
   private errorLocation: boolean = false;
   private hasChanges: boolean = false;
+
+  createEvent(data) {
+    return new Promise<any>((resolve, reject) =>{
+        this.firestore
+            .collection("scheduled_events")
+            .add(data)
+            .then(res => {}, err => reject(err));
+    });
+  }
+
+  getEvents() { 
+    return this.firestore.collection("scheduled_events").snapshotChanges();
+
+//     return this.db.list('/products').snapshotChanges().pipe(
+//   map((products: any[]) => products.map(prod => {
+//     const payload = prod.payload.val();
+//     const key = prod.key;
+//     return <any>{ key, ...payload };
+//   })),
+// );
+  }
+
+  
+
+
 
   getCategories() {
     this.http.get('https://api.foursquare.com/v2/venues/categories?' + this.credentials + '&v=20170930')
